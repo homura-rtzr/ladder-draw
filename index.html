@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="공정한 무작위 추첨을 위한 사다리 타기 웹 앱">
+    <title>사다리 타기 - Ladder Draw</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="header__title">사다리 타기</h1>
+            <p class="header__subtitle">공정한 무작위 추첨</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Input Section -->
+            <section id="input-section" class="section input-section">
+                <div class="input-group">
+                    <label for="participants" class="input-label">
+                        참여자 입력
+                        <span class="input-hint">(한 줄에 한 명)</span>
+                        <button type="button" class="button-csv" id="participants-csv-btn">CSV 가져오기</button>
+                    </label>
+                    <input type="file" id="participants-csv-input" accept=".csv,.txt" hidden>
+                    <textarea
+                        id="participants"
+                        class="input textarea"
+                        placeholder="홍길동&#10;김철수&#10;이영희"
+                        rows="6"
+                    ></textarea>
+                    <span class="input-count"><span id="participant-count">0</span>명</span>
+                </div>
+
+                <div class="input-group">
+                    <label for="results" class="input-label">
+                        결과 항목 입력
+                        <span class="input-hint">(한 줄에 하나)</span>
+                        <button type="button" class="button-csv" id="results-csv-btn">CSV 가져오기</button>
+                    </label>
+                    <input type="file" id="results-csv-input" accept=".csv,.txt" hidden>
+                    <textarea
+                        id="results"
+                        class="input textarea"
+                        placeholder="1등&#10;2등&#10;꽝"
+                        rows="6"
+                    ></textarea>
+                    <span class="input-count"><span id="result-count">0</span>개</span>
+                </div>
+
+                <div class="error-message" id="error-message" hidden></div>
+
+                <button id="start-button" class="button button--primary button--large">
+                    사다리 시작
+                </button>
+            </section>
+
+            <!-- Result Section -->
+            <section id="result-section" class="section result-section" hidden>
+                <h2 class="result-title">결과 발표!</h2>
+
+                <div class="result-summary" id="result-summary"></div>
+
+                <div class="button-group">
+                    <button id="share-button" class="button button--secondary">
+                        결과 저장
+                    </button>
+                </div>
+
+                <div class="canvas-container">
+                    <canvas id="ladder-canvas"></canvas>
+                </div>
+
+                <button id="reset-button" class="button button--outline">
+                    다시 하기
+                </button>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Return Zero Inc.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/ladder.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/share.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
